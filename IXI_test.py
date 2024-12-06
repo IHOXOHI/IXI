@@ -16,6 +16,9 @@ async def main():
             cali.StartCycle()
             n = 1
         else:
+            calib_indice = cali.CalState()
+            if calib_indice < (-100):
+                break
             number_cycles = cali.Cycle()
         await uasyncio.sleep_ms(1000)
     data = cali.PrintResults()

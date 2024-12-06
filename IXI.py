@@ -3,7 +3,7 @@ import struct
 
 rtc = RTC()
 
-results = bytearray()
+results = []
 
 class CALI:
     def __init__(self,rtc_cal=0,jump=1):
@@ -20,7 +20,6 @@ class CALI:
         CalChange = self.CalChange
         CalJump = self.CalJump
         Cycle = self.Cycle
-        AddResult = self.AddResult
         PrintResults = self.PrintResults
 
     def CalState(self):
@@ -44,8 +43,8 @@ class CALI:
         if self.n_period == 1:
             self.nb_cycles += 1
             if t != self.t_mem:
-                result = [self.rtc_cal,self.nb_cycles]
-                self.AddResult(result)
+                result = (self.rtc_cal,self.nb_cycles)
+                self.results.append(result)
                 if t > self.t_mem:
                     self.rtc_cal += self.jump
                 else:
@@ -61,17 +60,5 @@ class CALI:
 
         return self.nb_cycles
 
-    def AddResult(self,result):
-        for i in range(2):
-            data = result[i]
-            data = struct.pack(">H", data)
-            self.results.extend(data)
-
     def PrintResults(self):
-        resultat = []
-        nb = (len(self.results))
-        for i in range(0, nb, 2):
-            j = i + 2
-            data = struct.unpack(">H", self.results[i:j])
-            resultat.append(data)
-        return resultat
+        return self.results

@@ -1,5 +1,6 @@
 ###   IXI   ###
 #   The result is based on rtc.datetime[7], so the ms counter with 255 graduations (999ms), so 4ms of granularity there.
+####   a result of 1000 means: 1000 sec to wait for have a delay of 4ms. So 4 ns of precision in time.
 #Pybstick from MCHOBBY (6mA)
 Pybstick_0 = [10, 17, 4, 3, 34, 27, 11, 28, 7, 21]
 Pybstick_full, [[0,14], [-115,1238], [-116,-1109], [-115,1238], [-115,1233], [-115,1234], [-115,1233], [-115,1233], [-115,-1028], [-115,-1234], [-115,-36], [-115,1240], [-113,1139], [-113,1108], [-113,1233], [-113,369], [-111,696], [-112,772], [-114,1119], [-114,1233], [-114,1225], [-114,561]]
@@ -64,9 +65,15 @@ BP411_full, [[0, -21,], [100, -14], [-100, -31], [-200, -121], [-300,19], [-222,
 BP411_216 = [-1243, -1240, -1367, -1298, -1218, -1184, -1035, -1123, -1367, -1240, -1177, -1235, -1235, -502, -575, -1240]
 BP411_localtime = [3543]
 
+
+########################################################################################################################################
+#####################################################################################################################################
+
+
 ###   IXI   ###
 #with machine.RTC() #No calibration
 #The result is based on rtc.datetime[6], so the counter of second, so 1s of granularity. 255 less precise than before, there!
+####   a result of 1000 means: 1000 sec to wait for have a delay of 1s. So 1 ms of precision in time.
 #Feather esp32S3 from Unexpected Makers (94mA)
 UMFeatherS3 = [577,102,577,102,583,585]
 UMFeatherS3_localtime = [102, 102, 102]

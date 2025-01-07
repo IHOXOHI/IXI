@@ -66,7 +66,7 @@ BP411_localtime = [3543]
 
 ###   IXI   ###
 #with machine.RTC() #No calibration
-#The result is based on rtc.datetime[6], so the counter of second, so 1s of granularity there!
+#The result is based on rtc.datetime[6], so the counter of second, so 1s of granularity. 255 less precise than before, there!
 #Feather esp32S3 from Unexpected Makers (94mA)
 UMFeatherS3 = [577,102,577,102,583,585]
 UMFeatherS3_localtime = [102, 102, 102]

@@ -75,7 +75,7 @@ Giga = [42, 42, 41, 41]
 #Giga_localtime = to do... 
 #Giga_IMI = infinite!
 
-#Feather esp32S3 from Unexpected Makers (94mA)
+#Feather esp32S3 from Unexpected Makers (64mA)
 UMFeatherS3 = [577,102,577,102,583,585]
 UMFeatherS3_localtime = [102, 102, 102]
 

@@ -83,6 +83,9 @@ UMFeatherS3_localtime = [102, 102, 102]
 Pico = [1231,771,883,965,1087,902,1113,1028,1022,1129,3,1081]
 Pico_localtime = [1023, 1010]
 
+#Pico2 from raspberry(15mA):
+Pico2 = [
+
 #PicoLipo 16M from Pimoroni (22mA)
 Pimo = [1141,1261,1072,1335,1058,1078,1016,899,1028,845,1093,863,939]
 Pimo_localtime = [789,895]

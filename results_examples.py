@@ -92,7 +92,7 @@ Pimo_localtime = [789,895]
 Liligo = [102, 102, 102, 102, 102]
 Liligo_localtime = [102, 102]
 
-#Feather M4 express from Adafruit (20mA)
+#Feather M4 express from Adafruit (9mA)
 FeatherM4 = [1256,1866,1251,637,1292,1777,2328,2359,991,1002]
 FeatherM4_localtime = [1192, 1379]
 

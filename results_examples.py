@@ -65,7 +65,7 @@ BP411_localtime = [3543]
 #####################################################################################################################################
 
 
-###   IXI   ###
+###   IXI   ### see the script below
 #with machine.RTC() #No calibration
 #The result is based on rtc.datetime[6], so the counter of second, so 1s of granularity. 255 less precise than before, there!
 ####   a result of 1000 means: 1000 sec to wait for have a delay of 1s. So 1 ms of precision in time.
@@ -84,7 +84,7 @@ Pico = [1231,771,883,965,1087,902,1113,1028,1022,1129,3,1081]
 Pico_localtime = [1023, 1010]
 
 #Pico2 from raspberry(15mA):
-Pico2 = [1428,
+Pico2 = [1428,1774,
 
 #PicoLipo 16M from Pimoroni (22mA)
 Pimo = [1141,1261,1072,1335,1058,1078,1016,899,1028,845,1093,863,939]
@@ -109,3 +109,40 @@ RT1101 = [15436, 14784]
 #Lolin32 (30mA)
 Lolin32 = [1001, 1001, 920, 1001, 847, 696, 1144]
 Lolin32_localtime = [962]
+
+####  the script for boards without ms counter
+import uasyncio
+from machine import RTC
+
+rtc = RTC()
+n = 0
+t_mem = 0
+
+async def main():
+    global n, t_mem
+    n,t = 0, 0
+    while 1:
+        if ((t == 59) and (t_mem == 59)):
+                t_mem = -1
+        if n >= 2:
+            n+=1
+            t = rtc.datetime()[6]
+            t_mem += 1
+            if t != t_mem:
+                print(n)
+                break
+        if n == 1:
+            t = rtc.datetime()[6]
+            t_mem += 1
+            if t != t_mem:
+                n =2
+                t_mem = t
+        if n == 0:
+            t = rtc.datetime()[6]
+            t_mem = t
+            n = 2
+        await uasyncio.sleep_ms(1000)
+
+uasyncio.run(main())
+
+

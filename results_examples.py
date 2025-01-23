@@ -63,9 +63,7 @@ BP411_localtime = [3543]
 
 ########################################################################################################################################
 #####################################################################################################################################
-
-
-###   IXI   ### see the script below
+###   IXI6   ### see the script below
 #with machine.RTC() #No calibration
 #The result is based on rtc.datetime[6], so the counter of second, so 1s of granularity. 255 less precise than before, there!
 ####   a result of 1000 means: 1000 sec to wait for have a delay of 1s. So 1 ms of precision in time.
@@ -90,7 +88,7 @@ Pico2 = [1428,1774,
 Pimo = [1141,1261,1072,1335,1058,1078,1016,899,1028,845,1093,863,939]
 Pimo_localtime = [789,895]
 
-############## Esp32 with lora and oled from liligo (32mA)
+#Esp32 with lora and oled from liligo (32mA)
 Liligo = [102, 102, 102, 102, 102]
 Liligo_localtime = [102, 102]
 
@@ -110,7 +108,12 @@ RT1101 = [15436, 14784]
 Lolin32 = [1001, 1001, 920, 1001, 847, 696, 1144]
 Lolin32_localtime = [962]
 
-####  the script for boards without ms counter
+
+
+
+
+####################################################################################
+#### IXI6.py ####  the script for boards without ms counter
 import uasyncio
 from machine import RTC
 
@@ -140,7 +143,7 @@ async def main():
         if n == 0:
             t = rtc.datetime()[6]
             t_mem = t
-            n = 2
+            n = 1
         await uasyncio.sleep_ms(1000)
 
 uasyncio.run(main())
